@@ -1,6 +1,11 @@
 #include <iostream>
 #include <array>
 #include <vector>
+#include <fstream>
+#include <string>
+
+
+#include "a.h"
 
 void HelloWorld(int n);  // 前方宣言
 int Add(int x, int y);
@@ -66,26 +71,21 @@ int main(int argc, char* argv[]) {
     //std::cout << s.size() << std::endl;   // 5
 
 
-    std::vector<int> x = { 0, 1, 2, 3, 4 };
-    for (auto it = x.begin(); it != x.end(); ++it) {
-        std::cout << *it << std::endl;
+    //std::vector<int> x = { 0, 1, 2, 3, 4 };
+    //for (auto it = x.begin(); it != x.end(); ++it) {
+    //    std::cout << *it << std::endl;
+    //}
+
+    /* ファイル分割テスト */
+    sample();
+
+    /* ファイル書き出しのテスト */
+    std::ofstream file("fruits.txt");  // 書き出すファイルのパスを指定
+    std::vector<std::string> fruits = { "apple", "strawberry", "pear", "grape" };
+
+    for (const auto fruit : fruits) {
+        file << fruit << std::endl;  // 書き出し
     }
 
     return 0;
-}
-
-void HelloWorld(int n) {
-    for (int i = 0; i < n; ++i) {
-        // std::cout << "[" << i << "] " << "Hello World!" << std::endl;
-    }
-}
-
-int Add(int x, int y) {
-    return x + y;
-}
-
-void PrintArray(const int* x, std::size_t num) {
-    for (std::size_t i = 0; i < num; ++i) {
-        std::cout << x[i] << std::endl;
-    }
 }
